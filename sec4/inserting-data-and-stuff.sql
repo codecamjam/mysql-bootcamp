@@ -163,9 +163,38 @@ SELECT * FROM cats2;
 -- +-------+-----+
 
 
-/*l 
+/*l 54 setting default vals
 ****************************************************/
+-- | Field | Type        | Null | Key | Default | Extra |
+-- +-------+-------------+------+-----+---------+-------+
+-- | name  | varchar(50) | YES  |     | NULL    |       |
+-- | age   | int         | YES  |     | NULL    |       |
+-- +-------+-------------+------+-----+---------+-------+
 
+CREATE TABLE cats3(
+  name VARCHAR(20) DEFAULT 'no name provided',
+  age INT DEFAULT 99
+);
+
+DESC cats3;
+-- | name  | varchar(20) | YES  |     | no name provided |       |
+-- | age   | int         | YES  |     | 99               |       |
+
+INSERT INTO cats3(age) VALUES(13);
+
+CREATE TABLE cats4(
+  name VARCHAR(100) NOT NULL DEFAULT 'unnamed',
+  age INT NOT NULL DEFAULT 99
+);
+
+DESC cats4;
+-- | name  | varchar(100) | NO   |     | unnamed |       |
+-- | age   | int          | NO   |     | 99      |       |
+-- +-------+--------------+------+-----+---------+-------+
+
+INSERT INTO cats4(name, age)
+VALUE('Cali', NULL);
+-- ERROR 1048 (23000): Column 'age' cannot be null
 
 /*l 
 ****************************************************/
