@@ -34,8 +34,10 @@ CREATE TABLE cats (
   age INT
 );
 
-/*l ****************************************************/
-
+/*l32 how we know it worked ****************************************************/
+SHOW TABLES;
+SHOW COLUMNS FROM cats;
+DESC cats; /*not same as show columns from but in this context, its the same */
 
 /*l ****************************************************/
 
