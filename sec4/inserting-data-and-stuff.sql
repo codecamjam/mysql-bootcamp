@@ -79,8 +79,28 @@ VALUES
 SELECT * FROM people;
 DROP TABLE people;
 
-/*l 
+
+/*l50 warnings
+In the lecture Colt will introduce warnings in MySQL.
+If you happen to encounter an error instead of a warning then please see here for a discussion in the Q&A that covers what's happening there.
+The solution is to run the following command in your mysql shell: set sql_mode='';
+Thanks!
+Ian
 ****************************************************/
+INSERT INTO cats(name, age)
+VALUES (
+  'This cat is named Charlie which is also a human name. In fact I know a couple of Charlies. Fun fact',
+  10
+);
+SHOW WARNINGS;
+-- I have to use the show warnings command immediately or it will not work.
+-- Once you type a new command the warnings are removed from the buffer. They might be in a log, but that depends upon setup.
+
+INSERT INTO cats(name, age)
+VALUES (
+  'Lima',  'fsdfsdfsfsdfsdfsdfsdf'
+);
+-- Warning | 1366 | Incorrect integer value: 'fsdfsdfsfsdfsdfsdfsdf' for column 'age' at row 1
 
 
 /*l 
