@@ -18,9 +18,11 @@ INSERT INTO cats(name, age)
 VALUES('Draco', 11);
 
 
+
 /*l41 super quick intro to selects
 ****************************************************/
 SELECT * FROM cats;
+
 
 
 /*l43 multiple insert
@@ -31,6 +33,7 @@ VALUES ('Peanut', 2),
        ('Jelly', 7);
 -- Query OK, 3 rows affected (0.01 sec)
 -- Records: 3  Duplicates: 0  Warnings: 0
+
 
 
 /*l45 and l147 INSERT challenge
@@ -80,6 +83,7 @@ SELECT * FROM people;
 DROP TABLE people;
 
 
+
 /*l50 warnings
 In the lecture Colt will introduce warnings in MySQL.
 If you happen to encounter an error instead of a warning then please see here for a discussion in the Q&A that covers what's happening there.
@@ -103,8 +107,60 @@ VALUES (
 -- Warning | 1366 | Incorrect integer value: 'fsdfsdfsfsdfsdfsdfsdf' for column 'age' at row 1
 
 
-/*l 
+
+/*l52 null and not null
 ****************************************************/
+INSERT INTO cats(name) VALUES('Alabama');
+-- | This cat is named Charlie which is also a human na |   10 |
+-- | Lima                                               |    0 |
+-- | Alabama                                            | NULL |
+
+DESC cats;
+-- | Field | Type        | Null | Key | Default | Extra |
+-- +-------+-------------+------+-----+---------+-------+
+-- | name  | varchar(50) | YES  |     | NULL    |       |
+-- | age   | int         | YES  |     | NULL    |       |
+-- +-------+-------------+------+-----+---------+-------+
+
+INSERT INTO cats() VALUES();
+-- | NULL| NULL |
+
+CREATE TABLE cats2(
+  name VARCHAR(100) NOT NULL,
+  age INT NOT NULL
+);
+
+DESC cats2;
+-- | Field | Type         | Null | Key | Default | Extra |
+-- +-------+--------------+------+-----+---------+-------+
+-- | name  | varchar(100) | NO   |     | NULL    |       |
+-- | age   | int          | NO   |     | NULL    |       |
+-- +-------+--------------+------+-----+---------+-------+
+
+INSERT INTO cats2(name)
+VALUES('Texas');
+-- Query OK, 1 row affected, 1 warning (0.01 sec)
+SHOW WARNINGS;
+-- | Warning | 1364 | Field 'age' doesn't have a default value |
+
+SELECT * FROM cats2;
+-- +-------+-----+
+-- | name  | age |
+-- +-------+-----+
+-- | Texas |   0 |
+-- +-------+-----+
+
+INSERT INTO cats2(age) VALUES(7);
+SHOW WARNINGS;
+-- | Warning | 1364 | Field 'name' doesn't have a default value |
+
+SELECT * FROM cats2;
+-- +-------+-----+
+-- | name  | age |
+-- +-------+-----+
+-- | Texas |   0 |
+-- |       |   7 |
+-- +-------+-----+
 
 
 /*l 
