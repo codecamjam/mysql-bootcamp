@@ -80,6 +80,7 @@ WHERE breed='Tabby';
 
 UPDATE cats SET age=14 
 WHERE name='Misty';
+
 --------------------------------------------------------
 
 
@@ -96,12 +97,15 @@ WHERE breed='maine coon';
 
 -- UPDATE cat SET age=12 would update all cat ages to 12
 
-
 --------------------------------------------------------
 
-
-/*l
+/*l80 delete TIP: RUN SELECT BEFORE DELETING ANYTHING!
 *******************************************************/
+SELECT FROM cats WHERE name='Egg';
+DELETE FROM cats WHERE name='Egg';
+
+--this would delete all rows in the table
+DELETE FROM cats;
 
 --------------------------------------------------------
 
