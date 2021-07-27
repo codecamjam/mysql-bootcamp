@@ -17,13 +17,13 @@ VALUES('Blue', 1);
 INSERT INTO cats(name, age)
 VALUES('Draco', 11);
 
-
+-----------------------------------------------------
 
 /*l41 super quick intro to selects
 ****************************************************/
 SELECT * FROM cats;
 
-
+-----------------------------------------------------
 
 /*l43 multiple insert
 ****************************************************/
@@ -34,7 +34,7 @@ VALUES ('Peanut', 2),
 -- Query OK, 3 rows affected (0.01 sec)
 -- Records: 3  Duplicates: 0  Warnings: 0
 
-
+-----------------------------------------------------
 
 /*l45 and l147 INSERT challenge
 ****************************************************/
@@ -82,7 +82,7 @@ VALUES
 SELECT * FROM people;
 DROP TABLE people;
 
-
+-----------------------------------------------------
 
 /*l50 warnings
 In the lecture Colt will introduce warnings in MySQL.
@@ -106,7 +106,7 @@ VALUES (
 );
 -- Warning | 1366 | Incorrect integer value: 'fsdfsdfsfsdfsdfsdfsdf' for column 'age' at row 1
 
-
+-----------------------------------------------------
 
 /*l52 null and not null
 ****************************************************/
@@ -162,6 +162,7 @@ SELECT * FROM cats2;
 -- |       |   7 |
 -- +-------+-----+
 
+-----------------------------------------------------
 
 /*l 54 setting default vals
 ****************************************************/
@@ -196,9 +197,74 @@ INSERT INTO cats4(name, age)
 VALUE('Cali', NULL);
 -- ERROR 1048 (23000): Column 'age' cannot be null
 
-/*l 
-****************************************************/
+-----------------------------------------------------
 
+/*l56 primer on primary keys
+****************************************************/
+---without primary keys, we can insert duplicates
+CREATE TABLE unique_cats (
+  cat_id INT NOT NULL,
+  name VARCHAR(100),
+  age INT,
+  PRIMARY KEY (cat_id)
+);
+
+DESC unique_cats;
+-- +--------+--------------+------+-----+---------+-------+
+-- | Field  | Type         | Null | Key | Default | Extra |
+-- +--------+--------------+------+-----+---------+-------+
+-- | cat_id | int          | NO   | PRI | NULL    |       |
+-- | name   | varchar(100) | YES  |     | NULL    |       |
+-- | age    | int          | YES  |     | NULL    |       |
+-- +--------+--------------+------+-----+---------+-------+
+
+INSERT INTO unique_cats(cat_id, name, age)
+VALUES(1, 'FRED', 23);
+
+INSERT INTO unique_cats(cat_id, name, age)
+VALUES(2, 'LOUIS', 3);
+
+SELECT * FROM unique_cats;
+-- +--------+-------+------+
+-- | cat_id | name  | age  |
+-- +--------+-------+------+
+-- |      1 | FRED  |   23 |
+-- |      2 | LOUIS |    3 |
+-- +--------+-------+------+
+
+CREATE TABLE unique_cats2 (
+  cat_id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(100),
+  age INT,
+  PRIMARY KEY (cat_id)
+);
+
+DESC unique_cats2;
+-- +--------+--------------+------+-----+---------+----------------+
+-- | Field  | Type         | Null | Key | Default | Extra          |
+-- +--------+--------------+------+-----+---------+----------------+
+-- | cat_id | int          | NO   | PRI | NULL    | auto_increment |
+-- | name   | varchar(100) | YES  |     | NULL    |                |
+-- | age    | int          | YES  |     | NULL    |                |
+-- +--------+--------------+------+-----+---------+----------------+
+
+INSERT INTO unique_cats2(name, age)
+VALUES('Skippy', 4);
+
+INSERT INTO unique_cats2(name, age)
+VALUES('Jif', 3);
+
+INSERT INTO unique_cats2(name, age)
+VALUES('Jif', 3);
+
+SELECT * FROM unique_cats2;
+-- +--------+--------+------+
+-- | cat_id | name   | age  |
+-- +--------+--------+------+
+-- |      1 | Skippy |    4 |
+-- |      2 | Jif    |    3 |
+-- |      3 | Jif    |    3 |
+-- +--------+--------+------+
 
 /*l 
 ****************************************************/
