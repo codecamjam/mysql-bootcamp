@@ -41,8 +41,15 @@ SELECT cat_id, name, age FROM cats;
 
 --------------------------------------------------------
 
-/*l68
+/*l68 where
 *******************************************************/
+
+SELECT * FROM cats 
+WHERE age = 4;
+
+SELECT * FROM cats 
+WHERE name = 'Egg';
+---by default, case insensitive so EGG/egg would still work
 
 --------------------------------------------------------
 
