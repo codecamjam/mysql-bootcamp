@@ -83,8 +83,19 @@ WHERE name='Misty';
 --------------------------------------------------------
 
 
-/*l
+/*l77 update challenge
 *******************************************************/
+UPDATE cats SET name='Jack'
+WHERE name='jackson';
+
+UPDATE cats SET breed='British Shorthair'
+WHERE name='Ringo';
+
+UPDATE cats SET age=12
+WHERE breed='maine coon';
+
+-- UPDATE cat SET age=12 would update all cat ages to 12
+
 
 --------------------------------------------------------
 
