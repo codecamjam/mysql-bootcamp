@@ -288,7 +288,7 @@ CREATE TABLE employees(
   PRIMARY KEY (employee_id)
 );
 
-INSERT into employees(
+INSERT INTO employees(
   last_name, first_name, middle_name, age, current_status
 )
 VALUES 
@@ -296,5 +296,3 @@ VALUES
 ('Jarczyk', 'Ashton', 'Drake', 23, 'part-time');
 
 
-/*l 
-****************************************************/
