@@ -73,10 +73,13 @@ DESC cats;
 
 --------------------------------------------------------
 
-
-/*l
+/*l75 update TIP: TRY SELECTING BEFORE YOU UPDATE!!!!!
 *******************************************************/
+UPDATE cats SET breed='Shorthair' 
+WHERE breed='Tabby';
 
+UPDATE cats SET age=14 
+WHERE name='Misty';
 --------------------------------------------------------
 
 
