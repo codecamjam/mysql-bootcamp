@@ -39,8 +39,8 @@ SHOW TABLES;
 SHOW COLUMNS FROM cats;
 DESC cats; /*not same as show columns from but in this context, its the same */
 
-/*l ****************************************************/
-
+/*l34 drop tables ****************************************************/
+DROP TABLE cats;
 
 /*l ****************************************************/
 
