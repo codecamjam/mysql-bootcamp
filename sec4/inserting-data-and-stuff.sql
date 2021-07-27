@@ -22,9 +22,15 @@ VALUES('Draco', 11);
 ****************************************************/
 SELECT * FROM cats;
 
-/*l 
-****************************************************/
 
+/*l43 multiple insert
+****************************************************/
+INSERT INTO cats(name, age)
+VALUES ('Peanut', 2),
+       ('Butter', 4),
+       ('Jelly', 7);
+-- Query OK, 3 rows affected (0.01 sec)
+-- Records: 3  Duplicates: 0  Warnings: 0
 
 /*l 
 ****************************************************/
