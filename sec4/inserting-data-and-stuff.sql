@@ -18,10 +18,9 @@ INSERT INTO cats(name, age)
 VALUES('Draco', 11);
 
 
-
-/*l 
+/*l41 super quick intro to selects
 ****************************************************/
-
+SELECT * FROM cats;
 
 /*l 
 ****************************************************/
