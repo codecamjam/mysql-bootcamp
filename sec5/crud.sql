@@ -53,9 +53,13 @@ WHERE name = 'Egg';
 
 --------------------------------------------------------
 
-/*l
+/*70 select challenge
 *******************************************************/
-
+SELECT cat_id FROM cats;
+SELECT name, breed FROM cats;
+SELECT name, age FROM cats WHERE breed = 'tabby';
+SELECT cat_id, age FROM cats WHERE cat_id = age;
+SELECT * FROM cats WHERE cat_id=age;
 --------------------------------------------------------
 
 /*l
