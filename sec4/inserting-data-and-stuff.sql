@@ -266,8 +266,34 @@ SELECT * FROM unique_cats2;
 -- |      3 | Jif    |    3 |
 -- +--------+--------+------+
 
-/*l 
+/*l58 table constraints ex
 ****************************************************/
+/*
+define an employees table with the following fields:
+id - number (auto increment) mandatory primary key
+last_name - text, mandatory
+first_name - text mandatory
+middle_name - text, not mand
+age - number mand
+current_status - text, mandatory, defaults to employed
+*/
+CREATE TABLE employees(
+  employee_id INT NOT NULL AUTO_INCREMENT,
+  ---can also include PRIMARY KEY after AUTO_INCREMENT
+  last_name VARCHAR(50) NOT NULL,
+  first_name VARCHAR(50) NOT NULL,
+  middle_name VARCHAR(50),
+  age INT NOT NULL,
+  current_status VARCHAR(50) NOT NULL DEFAULT 'employed',
+  PRIMARY KEY (employee_id)
+);
+
+INSERT into employees(
+  last_name, first_name, middle_name, age, current_status
+)
+VALUES 
+('Taghlabi', 'Cameron', 'Jam', 34, 'looking'),
+('Jarczyk', 'Ashton', 'Drake', 23, 'part-time');
 
 
 /*l 
