@@ -97,9 +97,25 @@ ORDER BY pages DESC LIMIT 1;
 ------------------------------------------------------
 
 
-/*l
+/*l143 using min and max with groupBy
 *****************************************************/
+-- find the year each author published
+-- their first book
+SELECT author_fname, author_lname, MIN(released_year)
+FROM books
+GROUP BY author_lname, author_fname;
 
+-- find the longest page count for each author
+SELECT author_fname, author_lname, title, MAX(pages) 
+FROM books
+GROUP BY author_lname, author_fname;
+
+SELECT
+  CONCAT(author_fname, ' ', author_lname) AS author,
+  MAX(pages) AS 'longest book'
+FROM books
+GROUP BY author_lname,
+         author_fname;
 
 
 ------------------------------------------------------
