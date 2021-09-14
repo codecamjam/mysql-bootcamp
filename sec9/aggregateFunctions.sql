@@ -48,9 +48,23 @@ SELECT CONCAT('In ', released_year, ' ', COUNT(*), ' book(s) released') AS year 
 ------------------------------------------------------
 
 
-/*l
+/*l39 min and max
 *****************************************************/
-
+SELECT MIN(released_year) 
+FROM books;
+ 
+SELECT MIN(released_year) FROM books;
+ 
+SELECT MIN(pages) FROM books;
+ 
+SELECT MAX(pages) 
+FROM books;
+ 
+SELECT MAX(released_year) 
+FROM books;
+ 
+SELECT MAX(pages), title
+FROM books;
 
 
 ------------------------------------------------------
