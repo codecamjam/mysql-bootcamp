@@ -92,7 +92,41 @@ INSERT INTO people
 
 /*l167 formatting dates
 *****************************************************/
+-- In the following lecture, titled "Formatting Dates", there's a small typo around the 13 minute and 50 second mark.
 
+-- It should say %i for minute, instead of %m, the correction can also be seen in the CODE lecture.
+
+SELECT name, birthdate FROM people;
+ 
+SELECT name, DAY(birthdate) FROM people;
+ 
+SELECT name, birthdate, DAY(birthdate) FROM people;
+ 
+SELECT name, birthdate, DAYNAME(birthdate) FROM people;
+ 
+SELECT name, birthdate, DAYOFWEEK(birthdate) FROM people;
+ 
+SELECT name, birthdate, DAYOFYEAR(birthdate) FROM people;
+ 
+SELECT name, birthtime, DAYOFYEAR(birthtime) FROM people;
+ 
+SELECT name, birthdt, DAYOFYEAR(birthdt) FROM people;
+ 
+SELECT name, birthdt, MONTH(birthdt) FROM people;
+ 
+SELECT name, birthdt, MONTHNAME(birthdt) FROM people;
+ 
+SELECT name, birthtime, HOUR(birthtime) FROM people;
+ 
+SELECT name, birthtime, MINUTE(birthtime) FROM people;
+ 
+SELECT CONCAT(MONTHNAME(birthdate), ' ', DAY(birthdate), ' ', YEAR(birthdate)) FROM people;
+ 
+SELECT DATE_FORMAT(birthdt, 'Was born on a %W') FROM people;
+ 
+SELECT DATE_FORMAT(birthdt, '%m/%d/%Y') FROM people;
+ 
+SELECT DATE_FORMAT(birthdt, '%m/%d/%Y at %h:%i') FROM people;
 
 
 ------------------------------------------------------
