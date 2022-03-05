@@ -82,7 +82,9 @@ SELECT * FROM people;
 
 /*l165 curdate, curtime, and now
 *****************************************************/
-
+INSERT INTO people
+(name, birthdate, birthtime, birthdt) VALUES
+('Toaster', CURDATE(), CURTIME(), NOW());
 
 
 ------------------------------------------------------
