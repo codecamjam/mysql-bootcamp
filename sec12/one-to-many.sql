@@ -1,16 +1,16 @@
 /*l199 real world data is messy
 *****************************************************/
-
+--just slides
 ------------------------------------------------------
 
 /*l200 types of data relationships
 *****************************************************/
-
+--just slides
 ------------------------------------------------------
 
 /*l201 one to many: the basics
 *****************************************************/
-
+--just slides
 ------------------------------------------------------
 
 /*l202 working with foreign keys
@@ -54,16 +54,25 @@ VALUES
 ('2015/01/03', 12.50, 2),
 ('1999/04/11', 450.25, 5);
 
-
-
-
 ------------------------------------------------------
-
 
 
 /*l204 cross join
 *****************************************************/
+-- Finding Orders Placed By George: 2 Step Process
 
+SELECT id FROM customers WHERE last_name='George';
+SELECT * FROM orders WHERE customer_id = 1;
+-- Finding Orders Placed By George: Using a subquery
+
+SELECT * FROM orders WHERE customer_id =
+    (
+        SELECT id FROM customers
+        WHERE last_name='George'
+    );
+-- Cross Join Craziness
+
+SELECT * FROM customers, orders; 
 
 
 ------------------------------------------------------
