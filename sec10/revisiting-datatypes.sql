@@ -45,7 +45,19 @@ SELECT * FROM items;
 /*l159 float and double
 *****************************************************/
 
-
+CREATE TABLE thingies (price FLOAT);
+ 
+INSERT INTO thingies(price) VALUES (88.45);
+ 
+SELECT * FROM thingies;
+ 
+INSERT INTO thingies(price) VALUES (8877.45);
+ 
+SELECT * FROM thingies;
+ 
+INSERT INTO thingies(price) VALUES (8877665544.45);
+ 
+SELECT * FROM thingies;
 
 ------------------------------------------------------
 
