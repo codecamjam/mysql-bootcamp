@@ -203,25 +203,64 @@ CREATE TABLE comments2 (
 
 /*l173 data types exercises
 *****************************************************/
+--whats a good use case for char
+-- Used for text that we know has a fixed length, e.g., State abbreviations, 
+-- abbreviated company names, sex M/F, etc.
 
 
+--price < 1,000,000
+CREATE TABLE inventory (
+    item_name VARCHAR(100),
+    price DECIMAL(8,2),
+    quantity INT
+);
+
+--diff between datetime and timestamp
+-- They both store datetime information, but there's a difference in the range, 
+-- TIMESTAMP has a smaller range. TIMESTAMP also takes up less space. 
+-- TIMESTAMP is used for things like meta-data about when something is created
+-- or updated.
+
+--print out the current time
+SELECT CURTIME();
+
+--print out current date (but not time)
+SELECT CURDATE();
+
+--print out current day of the week
+SELECT DAYOFWEEK(CURDATE());
+
+--print current day of the week (day name)
+SELECT DAYOFWEEK(NOW());
+
+--print out current date and time mm/dd/yyyy
+SELECT DATE_FORMAT(NOW(), '%w') + 1;
+
+SELECT DATE_FORMAT(NOW(), '%w') + 1;
+ 
+SELECT DAYNAME(NOW());
+SELECT DATE_FORMAT(NOW(), '%W');
+
+--print out current day and time using word format (January 2nd, April 1st)
+
+SELECT DATE_FORMAT(CURDATE(), '%m/%d/%Y');
+ 
+SELECT DATE_FORMAT(NOW(), '%M %D at %h:%i');
+ 
+
+--create a tweets table that stores 
+--tweet content, username, and time it was created
+CREATE TABLE tweets(
+    content VARCHAR(140),
+    username VARCHAR(20),
+    created_at TIMESTAMP DEFAULT NOW()
+);
+ 
+INSERT INTO tweets (content, username) VALUES('this is my first tweet', 'coltscat');
+SELECT * FROM tweets;
+ 
+INSERT INTO tweets (content, username) VALUES('this is my second tweet', 'coltscat');
+SELECT * FROM tweets;
 
 ------------------------------------------------------
-
-
-/*l
-*****************************************************/
-
-
-
-------------------------------------------------------
-
-
-/*l
-*****************************************************/
-
-
-
-------------------------------------------------------
-
 
