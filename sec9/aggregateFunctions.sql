@@ -185,7 +185,32 @@ GROUP BY author_lname, author_fname;
 
 /*l150 Aggregate function challenges
 *****************************************************/
+--print the number of books in the DB
+SELECT COUNT(*) FROM books;
 
+--print out how many books were released in each year
+SELECT released_year, COUNT(*) FROM books GROUP BY released_year;
+
+--print out the total number of books in stock
+SELECT Sum(stock_quantity) FROM BOOKS;
+
+--find the average year for each author
+SELECT author_fname, author_lname, AVG(released_year) 
+FROM books 
+GROUP BY author_fname, author_lname;
+
+--find the full name of the author who wrote the longest book
+SELECT CONCAT(author_fname , ' ' , author_lname) as 'full name', pages
+FROM books
+ORDER BY pages DESC 
+LIMIT 1;
+
+SELECT 
+  released_year AS year,
+  COUNT(*) AS '# books',
+  AVG(pages) AS 'avg pages'
+FROM books
+GROUP BY year;
 
 
 
