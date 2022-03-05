@@ -17,7 +17,15 @@ SELECT title, author_lname FROM books WHERE author_lname != 'Harris';
 
 /*l179 not like
 *****************************************************/
-
+SELECT title FROM books WHERE title LIKE 'W';
+ 
+SELECT title FROM books WHERE title LIKE 'W%';
+ 
+SELECT title FROM books WHERE title LIKE '%W%';
+ 
+SELECT title FROM books WHERE title LIKE 'W%';
+ 
+SELECT title FROM books WHERE title NOT LIKE 'W%';
 
 
 ------------------------------------------------------
