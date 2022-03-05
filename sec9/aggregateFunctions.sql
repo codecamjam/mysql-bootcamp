@@ -123,8 +123,37 @@ GROUP BY author_lname,
 
 
 
-/*l
+/*l146 Sum Function
 *****************************************************/
+SELECT SUM(pages)
+FROM books;
+ 
+SELECT SUM(released_year) FROM books;
+ 
+SELECT author_fname,
+    author_lname,
+    Sum(pages) 
+FROM books
+GROUP BY
+    author_lname,
+    author_fname;
+ 
+SELECT author_fname,
+      author_lname,
+      Sum(released_year)
+FROM books
+GROUP BY
+    author_lname,
+    author_fname;
+
+SELECT author_fname,
+    author_lname,
+    Sum(pages) AS sum_pages
+FROM books
+GROUP BY
+    author_lname,
+    author_fname
+ORDER BY sum_pages;
 
 
 
