@@ -292,7 +292,7 @@ RIGHT JOIN customers
 SELECT * FROM orders
 LEFT JOIN customers
     ON customers.id = orders.customer_id; 
-		   
+
 SELECT * FROM customers
 RIGHT JOIN orders
     ON customers.id = orders.customer_id;
@@ -303,8 +303,117 @@ RIGHT JOIN orders
 
 /*l216 our first joins exercise
 *****************************************************/
+--make student table: id, first_name
+--make papers table: title, grade, student_id
+
+CREATE DATABASE school;
+use school;
+
+CREATE TABLE students (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	first_name VARCHAR(50)
+);
+
+CREATE TABLE papers (
+	id int AUTO_INCREMENT PRIMARY KEY,
+	title VARCHAR(100),
+	grade int,
+	student_id int,
+	FOREIGN KEY(student_id)
+	REFERENCES students(id)
+);
+
+INSERT INTO students (first_name) VALUES 
+('Caleb'), ('Samantha'), ('Raj'), ('Carlos'), ('Lisa');
+
+INSERT INTO papers (student_id, title, grade ) VALUES
+(1, 'My First Book Report', 60),
+(1, 'My Second Book Report', 75),
+(2, 'Russian Lit Through The Ages', 94),
+(2, 'De Montaigne and The Art of The Essay', 98),
+(4, 'Borges and Magical Realism', 89);
 
 
++------------+---------------------------------------+-------+
+| first_name | title                                 | grade |
++------------+---------------------------------------+-------+
+| Samantha   | De Montaigne and The Art of The Essay |    98 |
+| Samantha   | Russian Lit Through The Ages          |    94 |
+| Carlos     | Borges and Magical Realism            |    89 |
+| Caleb      | My Second Book Report                 |    75 |
+| Caleb      | My First Book Report                  |    60 |
++------------+---------------------------------------+-------+
+SELECT first_name, title, grade
+FROM students 
+JOIN papers
+	ON students.id = papers.student_id
+ORDER BY grade DESC;
+
++------------+---------------------------------------+-------+
+| first_name | title                                 | grade |
++------------+---------------------------------------+-------+
+| Caleb      | My First Book Report                  |    60 |
+| Caleb      | My Second Book Report                 |    75 |
+| Samantha   | Russian Lit Through The Ages          |    94 |
+| Samantha   | De Montaigne and The Art of The Essay |    98 |
+| Raj        | NULL                                  |  NULL |
+| Carlos     | Borges and Magical Realism            |    89 |
+| Lisa       | NULL                                  |  NULL |
++------------+---------------------------------------+-------+
+SELECT first_name, title, grade
+FROM students
+LEFT JOIN papers
+	ON students.id = papers.student_id;
+
++------------+---------------------------------------+-------+
+| first_name | title                                 | grade |
++------------+---------------------------------------+-------+
+| Caleb      | My First Book Report                  | 60    |
+| Caleb      | My Second Book Report                 | 75    |
+| Samantha   | Russian Lit Through The Ages          | 94    |
+| Samantha   | De Montaigne and The Art of The Essay | 98    |
+| Raj        | MISSING                               | 0     |
+| Carlos     | Borges and Magical Realism            | 89    |
+| Lisa       | MISSING                               | 0     |
++------------+---------------------------------------+-------+
+SELECT 
+	first_name, 
+	IFNULL(first_name,'MISSING') AS first_name, 
+	IFNULL(grade, 0) as grade
+FROM students 
+LEFT JOIN papers
+	ON students.id = papers.student_id;
+
++------------+---------+
+| first_name | average |
++------------+---------+
+| Samantha   | 96.0000 |
+| Carlos     | 89.0000 |
+| Caleb      | 67.5000 |
+| Raj        | 0       |
+| Lisa       | 0       |
++------------+---------+
+SELECT 
+	first_name,
+	IFNULL(AVG(grade), 0) AS average
+FROM students
+LEFT JOIN papers
+	ON students.id = papers.student_id
+GROUP BY students.id
+ORDER BY average DESC;
+
+SELECT first_name, 
+       Ifnull(Avg(grade), 0) AS average, 
+       CASE 
+         WHEN Avg(grade) IS NULL THEN 'FAILING' 
+         WHEN Avg(grade) >= 75 THEN 'PASSING' 
+         ELSE 'FAILING' 
+       end                   AS passing_status 
+FROM   students 
+       LEFT JOIN papers 
+              ON students.id = papers.student_id 
+GROUP  BY students.id 
+ORDER  BY average DESC;
 
 ------------------------------------------------------
 
@@ -316,19 +425,4 @@ RIGHT JOIN orders
 
 ------------------------------------------------------
 
-
-/*l
-*****************************************************/
-
-
-
-------------------------------------------------------
-
-
-/*l
-*****************************************************/
-
-
-
-------------------------------------------------------
 
