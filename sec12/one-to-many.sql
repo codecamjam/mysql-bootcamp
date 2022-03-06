@@ -281,7 +281,21 @@ VALUES ('2016/02/10', 99.99, 1),
 
 /*l214 Right and Left Joins: a common question
 *****************************************************/
+SELECT * FROM customers
+LEFT JOIN orders
+    ON customers.id = orders.customer_id;
 
+SELECT * FROM orders
+RIGHT JOIN customers
+    ON customers.id = orders.customer_id;   
+
+SELECT * FROM orders
+LEFT JOIN customers
+    ON customers.id = orders.customer_id; 
+		   
+SELECT * FROM customers
+RIGHT JOIN orders
+    ON customers.id = orders.customer_id;
 
 
 ------------------------------------------------------
