@@ -209,6 +209,19 @@ WHERE rating IS NULL;
 
 /*l233 tv joins challenge 5
 *****************************************************/
++-----------+------------+
+| genre     | avg_rating |
++-----------+------------+
+| Animation |    7.86000 |
+| Comedy    |    8.16250 |
+| Drama     |    8.04375 |
++-----------+------------+
+
+select genre, AVG(rating) as avg_rating
+from series
+JOIN reviews
+  ON series.id = reviews.series_id
+GROUP BY genre;
 
 
 
