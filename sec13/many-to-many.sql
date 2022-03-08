@@ -182,7 +182,8 @@ SELECT
     rating
 FROM reviews
 INNER JOIN reviewers
-    ON reviewers.id = reviews.reviewer_id;
+    ON reviewers.id = reviews.reviewer_id
+WHERE r
 
 
 ------------------------------------------------------
@@ -190,8 +191,18 @@ INNER JOIN reviewers
 
 /*l231 tv joins challenge 4
 *****************************************************/
++-----------------------+
+| unreviewed_series     |
++-----------------------+
+| Malcolm In The Middle |
+| Pushing Daisies       |
++-----------------------+
 
-
+SELECT title AS unreviewed_series
+FROM series
+LEFT JOIN reviews
+    ON series.id = reviews.series_id
+WHERE rating IS NULL;
 
 ------------------------------------------------------
 
