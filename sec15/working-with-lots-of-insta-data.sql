@@ -35,8 +35,15 @@ LIMIT 2;
 
 
 
-/*ll264 insta clone challenge 
+/*ll264 insta clone challenge 3
 *****************************************************/
+-- 3. Identify Inactive Users (users with no photos)
+
+SELECT username
+FROM users
+LEFT JOIN photos
+    ON users.id = photos.user_id
+WHERE photos.id IS NULL;
 
 
 ------------------------------------------------------
