@@ -50,9 +50,23 @@ WHERE photos.id IS NULL;
 
 
 
-/*ll266 insta clone challenge 
+/*l266 insta clone challenge 4
 *****************************************************/
+-- 4. Identify most popular photo (and user who created it)
 
+SELECT 
+    username,
+    photos.id,
+    photos.image_url, 
+    COUNT(*) AS total
+FROM photos
+INNER JOIN likes
+    ON likes.photo_id = photos.id
+INNER JOIN users
+    ON photos.user_id = users.id
+GROUP BY photos.id
+ORDER BY total DESC
+LIMIT 1;
 
 ------------------------------------------------------
 
