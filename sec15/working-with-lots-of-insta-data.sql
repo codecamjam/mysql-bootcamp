@@ -19,8 +19,17 @@ LIMIT 5;
 
 
 
-/*ll262 insta clone challenge 
+/*ll262 insta clone challenge 2
 *****************************************************/
+-- 2. Most Popular Registration Date
+
+SELECT 
+    DAYNAME(created_at) AS day,
+    COUNT(*) AS total
+FROM users
+GROUP BY day
+ORDER BY total DESC
+LIMIT 2;
 
 ------------------------------------------------------
 
