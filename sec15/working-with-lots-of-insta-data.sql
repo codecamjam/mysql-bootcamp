@@ -72,9 +72,13 @@ LIMIT 1;
 
 
 
-/*ll268 insta clone challenge 
+/*l268 insta clone challenge 5
 *****************************************************/
+-- 5. Calculate average number of photos per user
 
+SELECT (SELECT Count(*) 
+        FROM   photos) / (SELECT Count(*) 
+                          FROM   users) AS avg; 
 
 ------------------------------------------------------
 
